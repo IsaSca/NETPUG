@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /**
+ * The implementation for each node.
  * @author Isaac Scarisbrick
  * @version 0.1
  * @since 0.1
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class Vertex {
     private ArrayList<Vertex> connections = new ArrayList<>();
     private int ID;
-    private int cost;
+    private int weight;
 
     /**
      * Adds a single vertex connection.
@@ -46,10 +47,10 @@ public class Vertex {
 
     //BELOW HERE IS BORING SHIT
 
-    public Vertex(ArrayList<Vertex> connections, int ID, int cost) {
+    public Vertex(ArrayList<Vertex> connections, int ID, int weight) {
         this.connections = connections;
         this.ID = ID;
-        this.cost = cost;
+        this.weight = weight;
     }
     public ArrayList<Vertex> getConnections() {
         return connections;
@@ -63,10 +64,10 @@ public class Vertex {
     public void setID(int ID) {
         this.ID = ID;
     }
-    public int getCost() {
-        return cost;
+    public int getWeight() {
+        return weight;
     }
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 }
