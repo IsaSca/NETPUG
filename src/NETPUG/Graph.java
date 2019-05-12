@@ -1,3 +1,5 @@
+package NETPUG;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ public class Graph {
 
     /**
      * Constructs the graph
-     * @param vertices Implementation for the Graph Nodes
+     * @param vertices Implementation for the NETPUG.Graph Nodes
      */
     public Graph(ArrayList<Vertex> vertices) {
         this.vertices = vertices;
@@ -30,7 +32,7 @@ public class Graph {
 
     /**
      * Sets the ArrayList to specific Vertices.
-     * @param vertices The ArrayList to set the Vertices of the Graph to.
+     * @param vertices The ArrayList to set the Vertices of the NETPUG.Graph to.
      */
     public void setVertices(ArrayList<Vertex> vertices) {
         this.vertices = vertices;
@@ -54,7 +56,7 @@ public class Graph {
             }
         }
         /**
-         * This will determine whether the graph is or isn't eulerian.
+         * This will determine whether the graph is or isn't Eulerian.
          */
         if (eulerNode == 2 || eulerNode == 0) {
             return true;

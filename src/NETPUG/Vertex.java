@@ -1,3 +1,5 @@
+package NETPUG;
+
 import java.util.ArrayList;
 
 /**
@@ -13,7 +15,7 @@ public class Vertex {
 
     /**
      * Adds a single vertex connection.
-     *@param g A Vertex to be added to connections.
+     *@param g A NETPUG.Vertex to be added to connections.
      *@since 0.1
      */
     public void addConnection(Vertex g) {
@@ -46,6 +48,21 @@ public class Vertex {
     }
 
     //BELOW HERE IS BORING SHIT
+
+
+    @Override
+    public String toString() {
+        return "Vertex{" +
+                "connections=" + connections +
+                ", ID=" + ID +
+                ", weight=" + weight +
+                '}';
+    }
+
+    public Vertex(int ID, int weight) {
+        this.ID = ID;
+        this.weight = weight;
+    }
 
     public Vertex(ArrayList<Vertex> connections, int ID, int weight) {
         this.connections = connections;
