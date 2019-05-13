@@ -56,10 +56,11 @@ public class Vertex {
      */
     private String connectionsToString(){
         StringBuilder connectionsStr = new StringBuilder();
-        for(int pos = 0; pos < connections.size() - 1; pos++){
+        int max = connections.size() - 1;
+        for(int pos = 0; pos < max; pos++){
             connectionsStr.append(connections.get(pos).getID()).append(", ");
         }
-        connectionsStr.append(connections.get(connections.size() - 1).getID());
+        connectionsStr.append(connections.get(max).getID());
         return connectionsStr.toString();
     }
 
