@@ -49,6 +49,11 @@ public class Vertex {
 
     //BELOW HERE IS BORING SHIT
 
+    /**
+     * Puts Connections into a String.
+     * @author Hawkeye
+     * @return Returns a String containing the connections.
+     */
     private String connectionsToString(){
         StringBuilder connectionsStr = new StringBuilder();
         for(int pos = 0; pos < connections.size() - 1; pos++){
