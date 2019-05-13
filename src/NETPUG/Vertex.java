@@ -49,12 +49,20 @@ public class Vertex {
 
     //BELOW HERE IS BORING SHIT
 
+    private String connectionsToString(){
+        StringBuilder connectionsStr = new StringBuilder();
+        for(int pos = 0; pos < connections.size() - 1; pos++){
+            connectionsStr.append(connections.get(pos).getID()).append(", ");
+        }
+        connectionsStr.append(connections.get(connections.size() - 1).getID());
+        return connectionsStr.toString();
+    }
 
     @Override
     public String toString() {
         return "Vertex{" +
-                "connections=" + connections +
-                ", ID=" + ID +
+                "connections=[" + connectionsToString() +
+                "], ID=" + ID +
                 ", weight=" + weight +
                 '}';
     }
