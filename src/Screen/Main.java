@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    //To get javafx 12 running: https://openjfx.io/openjfx-docs/#install-javafx
+    //To getVertex javafx 12 running: https://openjfx.io/openjfx-docs/#install-javafx
     //Next bit is in the above link, but if you didn't read it first time(Like me...), then it's written below as well.
     //Once installed you need to add this to the "VM options" section of the runtime configuration(The drop down at the top right next to the green play button):
     //--module-path "\path\to\javafx-sdk-12.0.1\lib" --add-modules javafx.controls,javafx.fxml
@@ -49,11 +49,14 @@ public class Main extends Application{
         double maxX = screenBounds.getMaxX() - screenBounds.getMinX();//Gets the width of the screen
         double maxY = screenBounds.getMaxY() - screenBounds.getMinY() + 2;//Gets the height of the screen
 
+        //IsaacsCode code = new IsaacsCode(height, width); <--- Goes here
+
+
         Controller cont = new Controller(maxY, maxX, THREADS);//Creates the controller, most things are done through this rather than the main class
         Scene scene = new Scene(cont);//Creates a Scene(Not the fainting lady one...), this is needed so that you can set that is showing in the screen
         mainStage.setScene(scene);
         //Sets the scene being shown on the mainStage(This is beginning to sound like I'm directing a pantomime, oh wait it's my code it may as well be one...)
-        mainStage.setFullScreen(true);//Sets the stage to use fullscreen(The one that you have to press esc to get out of, "You WILL look at what I want you to!")
+        mainStage.setFullScreen(true);//Sets the stage to use fullscreen(The one that you have to press esc to getVertex out of, "You WILL look at what I want you to!")
         mainStage.setAlwaysOnTop(false);//Makes it so that you can tab out of it without unfocusing and stuff like that(It's just generally nicer)
 
         //An animation timer, this is essentially another thread linked to your screens fps.
@@ -80,13 +83,15 @@ public class Main extends Application{
             }
         };
 
-        mainStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {//Adds an event handler for keys(Like a groundsman or something)
+        mainStage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {//Adds an clickEvent handler for keys(Like a groundsman or something)
                     switch (event.getCode()) {//A switch, because they're lightning fast! Or at least faster than an if else chain, and nicer looking
                         case E://EEEEEEEE
                             at.stop();//Stops teh animation timer(Kids, the shows over grow up and stop watching anime at teh cinema!)
                             mainStage.close();//Stops the stage
                             //Add any other required stops for different threads here(It's not nice losing control of your threads, they might sit in the corner making christmas jumpers or socks that don't fit you...)
                             System.exit(0);//Stops the program manually and 'should' stop all the threads
+                            break;
+                        case R:
                             break;
                     }
                 }
