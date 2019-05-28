@@ -10,13 +10,13 @@ import Screen.Controller;
  * @version 0.1
  * @since 0.1
  */
+
 public class Vertex {
     private ArrayList<Vertex> connections = new ArrayList<>();
     private int ID;
     private int weight;
-    private Random r = new Random();
-    Controller controller;
-    private int x = r.nextInt((Screen.Main.widthGet()));
+    private double x;
+    private double y;
 
     /**
      * Adds a single vertex connection.
@@ -78,6 +78,14 @@ public class Vertex {
                 '}';
     }
 
+    public String basicToString() {
+        return "Vertex[" +
+                "connections=[null]" +
+                ", ID=" + ID +
+                ", weight=" + weight +
+                ']';
+    }
+
     public Vertex(int ID, int weight) {
         this.ID = ID;
         this.weight = weight;
@@ -105,5 +113,21 @@ public class Vertex {
     }
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 }
