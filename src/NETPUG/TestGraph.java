@@ -7,7 +7,7 @@ public class TestGraph {
     public static void main(String[] args) {
         ArrayList<Vertex> v = new ArrayList<>();
         Random r = new Random();
-        for (int i = 0; i < 999; i++) {
+        for (int i = 0; i < 50; i++) {
             int q = r.nextInt((999999-1) + 1) - 1;
             v.add(new Vertex(q, i));
         }

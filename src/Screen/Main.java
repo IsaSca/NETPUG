@@ -1,5 +1,6 @@
 package Screen;
 
+import NETPUG.TestGraph;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.ConditionalFeature;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    //To getVertex javafx 12 running: https://openjfx.io/openjfx-docs/#install-javafx
+    //To get javafx 12 running: https://openjfx.io/openjfx-docs/#install-javafx
     //Next bit is in the above link, but if you didn't read it first time(Like me...), then it's written below as well.
     //Once installed you need to add this to the "VM options" section of the runtime configuration(The drop down at the top right next to the green play button):
     //--module-path "\path\to\javafx-sdk-12.0.1\lib" --add-modules javafx.controls,javafx.fxml
@@ -25,8 +26,6 @@ public class Main extends Application{
     private final long[] frameTimes = new long[100];
     private int frameTimeIndex = 0;
     private boolean arrayFilled = false;
-
-
     /**
     * Does the thing that makes the things happen. It's a psvm, it does what it's told....
     * Launches the stage
@@ -49,7 +48,8 @@ public class Main extends Application{
         double maxX = screenBounds.getMaxX() - screenBounds.getMinX();//Gets the width of the screen
         double maxY = screenBounds.getMaxY() - screenBounds.getMinY() + 2;//Gets the height of the screen
 
-        //IsaacsCode code = new IsaacsCode(height, width); <--- Goes here
+        TestGraph test = new TestGraph();
+
 
 
         Controller cont = new Controller(maxY, maxX, THREADS);//Creates the controller, most things are done through this rather than the main class

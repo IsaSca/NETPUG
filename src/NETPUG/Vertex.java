@@ -1,6 +1,8 @@
 package NETPUG;
 
 import java.util.ArrayList;
+import java.util.Random;
+import Screen.Controller;
 
 /**
  * The implementation for each node.
@@ -12,6 +14,9 @@ public class Vertex {
     private ArrayList<Vertex> connections = new ArrayList<>();
     private int ID;
     private int weight;
+    private Random r = new Random();
+    Controller controller;
+    private int x = r.nextInt((Screen.Main.widthGet()));
 
     /**
      * Adds a single vertex connection.
