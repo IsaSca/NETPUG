@@ -1,9 +1,7 @@
 package NETPUG;
 
 import java.util.ArrayList;
-import java.util.Random;
-import Screen.Controller;
-
+import Screen.Util.Vector;
 /**
  * The implementation for each node.
  * @author Isaac Scarisbrick
@@ -15,9 +13,41 @@ public class Vertex {
     private ArrayList<Vertex> connections = new ArrayList<>();
     private int ID;
     private int weight;
-    private double x;
-    private double y;
+    private Vector vector;
 
+    public Vertex(int ID, int weight) {
+        this.ID = ID;
+        this.weight = weight;
+    }
+
+    public Vertex(ArrayList<Vertex> connections, int ID, int weight) {
+        this.connections = connections;
+        this.ID = ID;
+        this.weight = weight;
+    }
+    public ArrayList<Vertex> getConnections() {
+        return connections;
+    }
+    public void setConnections(ArrayList<Vertex> connections) {
+        this.connections = connections;
+    }
+    public int getID() {
+        return ID;
+    }
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    public int getWeight() {
+        return weight;
+    }
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Vector getVector() { return vector; }
+
+    public void setVector(Double x, Double y) { this.vector = new Vector(x,y); }
+    public void setVector(Vector v) { this.vector = v; }
     /**
      * Adds a single vertex connection.
      *@param g A NETPUG.Vertex to be added to connections.
@@ -86,48 +116,7 @@ public class Vertex {
                 ']';
     }
 
-    public Vertex(int ID, int weight) {
-        this.ID = ID;
-        this.weight = weight;
-    }
 
-    public Vertex(ArrayList<Vertex> connections, int ID, int weight) {
-        this.connections = connections;
-        this.ID = ID;
-        this.weight = weight;
-    }
-    public ArrayList<Vertex> getConnections() {
-        return connections;
-    }
-    public void setConnections(ArrayList<Vertex> connections) {
-        this.connections = connections;
-    }
-    public int getID() {
-        return ID;
-    }
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-    public int getWeight() {
-        return weight;
-    }
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
 
-    public double getX() {
-        return x;
-    }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
 }
