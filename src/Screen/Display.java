@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -34,9 +35,11 @@ public class Display extends Canvas {
         this.setHeight(height);
         this.height = height;
         this.shift = new Vector(0, 0);
+        this.scale = 1;
         this.mouseCont = new MouseController();
-        this.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> shift.add(mouseCont.clickEvent(new Vector(event.getX(), event.getY()))));
-        this.addEventHandler(ScrollEvent.SCROLL_FINISHED, event -> scale += mouseCont.scrollEvent(event.getDeltaY()));
+        this.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> mouseCont.mouseClicked(new Vector(event.getX(), event.getY())));
+        this.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> shift.add(mouseCont.clickEvent(new Vector(event.getX(), event.getY()), scale)));
+        this.addEventHandler(ScrollEvent.SCROLL, event -> scale += mouseCont.scrollEvent(event.getDeltaY()));
     }
 
     public void createTree(Graph graph) {
@@ -59,9 +62,12 @@ public class Display extends Canvas {
 
     public void draw() {
         GraphicsContext g = this.getGraphicsContext2D();
-        Vector tempVec;
-        for (BTNode node: temp){
-
+        g.clearRect(0, 0, width, height);
+        g.setFill(new Color(1, 0, 0, 1));
+        Vector tempVec, midShift = new Vector(width / 2, height / 2);
+        for (BTNode node : temp) {
+            tempVec = node.getPos().getAdd(shift).getMult(scale).getAdd(midShift);
+            g.fillOval(tempVec.x(), tempVec.y(), RADIUS * scale, RADIUS * scale);
         }
     }
 }

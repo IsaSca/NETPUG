@@ -28,6 +28,24 @@ public class Vector {
         return new Vector(x - other.x(), y - other.y());
     }
 
+    public void mult(double mult) {
+        this.x *= mult;
+        this.y *= mult;
+    }
+
+    public Vector getMult(double mult) {
+        return new Vector(this.x * mult, this.y * mult);
+    }
+
+    public void neg() {
+        this.x = -x;
+        this.y = -y;
+    }
+
+    public Vector getNeg() {
+        return new Vector(-x, -y);
+    }
+
     public double x() {
         return x;
     }

@@ -15,6 +15,8 @@ public class BTree{
     public void add(Vertex data){
         if(this.root != null){
             root.add(data, data.getID());
+        }else{
+            this.root = new BTNode(data);
         }
     }
 
@@ -27,7 +29,7 @@ public class BTree{
 
     public Vector getPos(int ID){
         if(this.root != null){
-            return root.getPos(ID);
+            return root.getVecPos(ID);
         }
         return null;
     }
