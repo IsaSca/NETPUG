@@ -1,28 +1,40 @@
 package NETPUG;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class TestGraph {
+    ArrayList<Vertex> vertices;
+    Graph graph;
     public static void main(String[] args) {
-        ArrayList<Vertex> v = new ArrayList<>();
-        Random r = new Random();
-        for (int i = 0; i < 999; i++) {
-            int q = r.nextInt((999999-1) + 1) - 1;
-            v.add(new Vertex(q, i));
-        }
-        Graph g = new Graph(v);
-        for (Vertex vertex : g.vertices) {
-            if (vertex.getConnections().size() == 0) {
-                for (Vertex q : g.vertices) {
-                    vertex.addConnection(q);
+        new TestGraph();
+    }
+
+    public TestGraph(){
+        vertices = new ArrayList<>();
+        graph = new Graph(vertices);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Would you like to add some nodes?");
+        if (scanner.next().toLowerCase().equals("yes")) {
+            System.out.println("How many nodes do you want to add");
+            int amount = scanner.nextInt();
+            if (amount > 0) {
+                System.out.println("Please enter your node(s)");
+                for (int i = 0; i < amount; i++) {
+                    graph.vertices.add(new Vertex(scanner.nextInt(), i));
                 }
             }
-        }
-        for (Vertex p : g.vertices) {
 
-            System.out.println(p.toString());
+        } else {
+            System.out.println("Thank you");
+            System.exit(0);
         }
+        for (Vertex v : graph.vertices) {
+            System.out.println(v.basicToString());
+        }
+
 
     }
 }
