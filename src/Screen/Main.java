@@ -80,6 +80,7 @@ public class Main extends Application{
                         }
                     }
                 });//I believe you can put any code you need to run either in the run later section or after, test it out!
+                cont.draw();
             }
         };
 

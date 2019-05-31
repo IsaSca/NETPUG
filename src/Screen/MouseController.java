@@ -4,26 +4,24 @@ import Screen.Util.Vector;
 
 public class MouseController {
 
-    private boolean mouseDown;
     private Vector lastClick;
 
 
     public MouseController() {
-        mouseDown = false;
         lastClick = new Vector(0, 0);
     }
 
-    public Vector clickEvent(Vector clickPos) {
-        if (!mouseDown) {
-            mouseDown = true;
-            lastClick = clickPos;
-            return new Vector(0, 0);
-        }
-        mouseDown = false;
-        return lastClick.getSub(clickPos);
+    public void mouseClicked(Vector clickPos){
+        lastClick = clickPos;
+    }
+
+    public Vector clickEvent(Vector clickPos, double scale) {
+        Vector temp = lastClick.getSub(clickPos).getNeg().getMult(scale*(1/scale));
+        lastClick = clickPos;
+        return temp;
     }
 
     public double scrollEvent(double val) {
-        return 0.1 * val;
+        return 0.01 * val;
     }
 }

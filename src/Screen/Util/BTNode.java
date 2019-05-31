@@ -83,16 +83,20 @@ public class BTNode {
         this.pos = pos;
     }
 
-    public Vector getPos(int ID){
+    public Vector getPos(){
+        return this.pos;
+    }
+
+    public Vector getVecPos(int ID){
         int thisID = data.getID();
         if(ID == thisID){
             return this.pos;
         }
         if(ID > thisID && this.right != null){
-            return right.getPos(ID);
+            return right.getVecPos(ID);
         }
         if(ID < thisID && this.left != null){
-            return left.getPos(ID);
+            return left.getVecPos(ID);
         }
         return null;
     }
@@ -111,5 +115,13 @@ public class BTNode {
 
     public BTNode getRight() {
         return right;
+    }
+
+    public Vertex getData(){
+        return this.data;
+    }
+
+    public void setData(Vertex vertex){
+        this.data = vertex;
     }
 }
