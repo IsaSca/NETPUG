@@ -46,6 +46,18 @@ public class Vector {
         return new Vector(-x, -y);
     }
 
+    public Vector getCopy() {
+        return new Vector(x, y);
+    }
+
+    public double length() {
+        return Math.sqrt((Math.pow(x, 2) + Math.pow(y, 2)));
+    }
+
+    public double lengthTo(Vector other){
+        return getSub(other).length();
+    }
+
     public double x() {
         return x;
     }

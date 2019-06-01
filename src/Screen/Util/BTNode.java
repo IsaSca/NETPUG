@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class BTNode {
 
     private Vertex data;
-    private Vector pos;
     private BTNode left;
     private BTNode right;
 
@@ -80,23 +79,23 @@ public class BTNode {
     }
 
     public void setPos(Vector pos){
-        this.pos = pos;
+        this.data.setVector(pos);
     }
 
     public Vector getPos(){
-        return this.pos;
+        return this.data.getVector();
     }
 
-    public Vector getVecPos(int ID){
+    public Vector getPosFromID(int ID){
         int thisID = data.getID();
         if(ID == thisID){
-            return this.pos;
+            return this.getData().getVector();
         }
         if(ID > thisID && this.right != null){
-            return right.getVecPos(ID);
+            return right.getPosFromID(ID);
         }
         if(ID < thisID && this.left != null){
-            return left.getVecPos(ID);
+            return left.getPosFromID(ID);
         }
         return null;
     }

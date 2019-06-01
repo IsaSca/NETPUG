@@ -29,7 +29,7 @@ public class BTree{
 
     public Vector getPos(int ID){
         if(this.root != null){
-            return root.getVecPos(ID);
+            return root.getPosFromID(ID);
         }
         return null;
     }

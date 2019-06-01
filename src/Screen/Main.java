@@ -48,7 +48,7 @@ public class Main extends Application{
         double maxX = screenBounds.getMaxX() - screenBounds.getMinX();//Gets the width of the screen
         double maxY = screenBounds.getMaxY() - screenBounds.getMinY() + 2;//Gets the height of the screen
 
-        TestGraph test = new TestGraph();
+        //TestGraph test = new TestGraph();
 
 
 
@@ -80,7 +80,7 @@ public class Main extends Application{
                         }
                     }
                 });//I believe you can put any code you need to run either in the run later section or after, test it out!
-                cont.draw();
+                cont.draw();//Draws everything, EVERYTHING!
             }
         };
 
