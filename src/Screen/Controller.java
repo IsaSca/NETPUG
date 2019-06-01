@@ -42,7 +42,7 @@ public class Controller extends GridPane {
      */
     public void generateGraph(){
         ArrayList<Vertex> vertexes = new ArrayList<>();//Creates an arraylist to store the vertexes
-        for (int ID = 0; ID < 99; ID++) {//Loops for the specified number of times to create that many vertexes
+        for (int ID = 0; ID < 10; ID++) {//Loops for the specified number of times to create that many vertexes
             int weight = ThreadLocalRandom.current().nextInt((999-1) + 1) - 1;
             //Creates a random variable for the weight of the vertex
             vertexes.add(new Vertex(ID, weight));//Adds the new vertex to the arraylist

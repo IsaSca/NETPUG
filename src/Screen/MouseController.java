@@ -28,7 +28,7 @@ public class MouseController {
      * @return The shift that the screen will move
      */
     public Vector clickEvent(Vector clickPos, double scale) {
-        Vector temp = lastClick.getSub(clickPos).getNeg().getMult(Math.pow(0.5, scale));
+        Vector temp = lastClick.getSub(clickPos).getNeg().getMult(Math.pow(1, scale));
         //Quite a lot in this one. So the shift of the mouse is subtracted from the last position.
         //The shift is then negated so that it moves the same way as the mouse.
         //Lastly the result is multiplied 0.5^(the scale). This is to scale the shift with the zoom.
@@ -42,6 +42,6 @@ public class MouseController {
      * @return The value that is to be added to the scale.
      */
     public double scrollEvent(double val) {
-        return 0.01 * val;//Return the amount to be added to the scale, multiplied down so that it is not too much.
+        return 0.25 * Math.signum(val);//Return the amount to be added to the scale, multiplied down so that it is not too much.
     }
 }

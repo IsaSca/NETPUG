@@ -39,7 +39,12 @@ public class Display extends Canvas {
         this.mouseCont = new MouseController();
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> mouseCont.mouseClicked(new Vector(event.getX(), event.getY())));
         this.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> shift.add(mouseCont.clickEvent(new Vector(event.getX(), event.getY()), scale)));
-        this.addEventHandler(ScrollEvent.SCROLL, event -> scale += mouseCont.scrollEvent(event.getDeltaY()));
+        this.addEventHandler(ScrollEvent.SCROLL, event -> {
+            scale += mouseCont.scrollEvent(event.getDeltaY());
+            if (scale < 0) {
+                scale = 0;
+            }
+        });
     }
 
     public void createTree(Graph graph) {
@@ -64,10 +69,25 @@ public class Display extends Canvas {
         GraphicsContext g = this.getGraphicsContext2D();
         g.clearRect(0, 0, width, height);
         g.setFill(new Color(1, 0, 0, 1));
-        Vector tempVec, midShift = new Vector(width / 2, height / 2);
+        Vector tempVec, midScreenShift = new Vector(width / 2, height / 2);
         for (BTNode node : temp) {
-            tempVec = node.getPos().getAdd(shift).getMult(scale).getAdd(midShift);
-            g.fillOval(tempVec.x(), tempVec.y(), RADIUS * scale, RADIUS * scale);
+            tempVec = node.getPos().getAdd(shift).getMult(scale).getAdd(midScreenShift);
+            g.fillOval(tempVec.x() - (RADIUS * scale) / 2, tempVec.y() - (RADIUS * scale) / 2, RADIUS * scale, RADIUS * scale);
+            for (Vertex con : node.getData().getConnections()) {
+                Vector otherPos = con.getVector().getAdd(shift).getMult(scale).getAdd(midScreenShift);
+                drawEdge(g, tempVec, otherPos);
+            }
         }
+    }
+
+    public void drawEdge(GraphicsContext g, Vector orig, Vector goTo) {
+        double angle = orig.angleTo(goTo);
+        Vector edgeFurther = goTo.getPointAt(angle, (RADIUS * scale) / 2);
+        angle += Math.PI;
+        angle %= 2 * Math.PI;
+        Vector edgeClosest = orig.getPointAt(angle, (RADIUS * scale) / 2);
+        g.strokeLine(edgeClosest.x(), edgeClosest.y(), edgeFurther.x(), edgeFurther.y());
+        //Point line = realPos.getPointAt(this.angle, this.MAGIC_SIZE / 2.0);
+        //g.strokeLine(realPos.getX() + this.MAGIC_SIZE / 2.0, realPos.getY() + this.MAGIC_SIZE / 2.0, line.getX() + this.MAGIC_SIZE / 2.0, line.getY() + this.MAGIC_SIZE / 2.0);
     }
 }

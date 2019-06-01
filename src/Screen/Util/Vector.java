@@ -58,6 +58,23 @@ public class Vector {
         return getSub(other).length();
     }
 
+    public double angleTo(Vector other){
+        Vector temp = getSub(other);
+        return Math.atan2(temp.y(), temp.x());
+    }
+
+    /**
+     *
+     * @param angle Angle in radians
+     * @param distance Distance to the point you want to get back from this one
+     * @return The vector point of the point defined by the inputs
+     */
+    public Vector getPointAt(double angle, double distance) {
+        double newX = Math.cos(angle) * distance;
+        double newY = Math.sin(angle) * distance;
+        return new Vector(this.x + newX, this.y + newY);
+    }
+
     public double x() {
         return x;
     }

@@ -7,6 +7,7 @@ import javafx.application.ConditionalFeature;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -97,6 +98,7 @@ public class Main extends Application{
                     }
                 }
         );
+        mainStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);//Removes esc as the escape key for full screen
         at.start();//Starts the animation timer(WE GO!)
         mainStage.show();//Raises the curtains(Sets the mainStage to be shown, duh...)
     }
