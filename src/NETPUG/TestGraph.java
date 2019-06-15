@@ -1,8 +1,7 @@
 package NETPUG;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class TestGraph {
@@ -26,12 +25,29 @@ public class TestGraph {
                     graph.vertices.add(new Vertex(scanner.nextInt(), i));
                 }
             }
+            System.out.println("Would you like to add connections for each node?");
+            if (scanner.next().toLowerCase().equals("yes")) {
+                for (Vertex v : graph.vertices) {
+                    System.out.println("Please enter the connections for " + v.getID() + ". Type null when done.");
+                    while (true) {
+                        v.addConnection(new Vertex(scanner.nextInt()));
+                        if (scanner.next().equals("null")) {
+                            break;
+                        }
+                    }
+                }
+            }
 
         } else {
             System.out.println("Thank you");
             System.exit(0);
         }
         for (Vertex v : graph.vertices) {
+//            if(v.getConnections().size() == 0) {
+//                System.out.println(v.toString());
+//            } else {
+//                System.out.println(v.basicToString());
+//            }
             System.out.println(v.basicToString());
         }
 

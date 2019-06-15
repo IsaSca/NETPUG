@@ -15,6 +15,10 @@ public class Vertex {
     private int weight;
     private Vector vector;
 
+    public Vertex(int ID) {
+        this.ID = ID;
+    }
+
     public Vertex(int ID, int weight) {
         this.ID = ID;
         this.weight = weight;
