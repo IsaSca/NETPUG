@@ -15,6 +15,10 @@ public class Vertex {
     private int weight;
     private Vector vector;
 
+    public Vertex(int ID) {
+        this.ID = ID;
+    }
+
     public Vertex(int ID, int weight) {
         this.ID = ID;
         this.weight = weight;
@@ -82,7 +86,7 @@ public class Vertex {
         return false;
     }
 
-    //BELOW HERE IS BORING SHIT
+    //BELOW HERE IS BORING
 
     /**
      * Puts Connections into a String.
@@ -90,24 +94,37 @@ public class Vertex {
      * @return Returns a String containing the connections.
      */
     private String connectionsToString(){
-        StringBuilder connectionsStr = new StringBuilder();
-        int max = connections.size() - 1;
-        for(int pos = 0; pos < max; pos++){
-            connectionsStr.append(connections.get(pos).getID()).append(", ");
+        if (this.connections.size() > 0) {
+            StringBuilder connectionsStr = new StringBuilder();
+            int max = connections.size() - 1;
+            for(int pos = 0; pos < max; pos++){
+                connectionsStr.append(connections.get(pos).getID()).append(", ");
+            }
+            connectionsStr.append(connections.get(max).getID());
+            return connectionsStr.toString();
         }
-        connectionsStr.append(connections.get(max).getID());
-        return connectionsStr.toString();
+        return "null";
     }
 
+    /**
+     * Puts a vertex into a string form.
+     * @author IsaSca
+     * @return A string containing vertex information
+     */
     @Override
     public String toString() {
-        return "Vertex{" +
+        return "Vertex: " + ID + " {" +
                 "connections=[" + connectionsToString() +
                 "], ID=" + ID +
                 ", weight=" + weight +
                 '}';
     }
 
+    /**
+     * An implementation of toString that is used when connectionsToString isn't working.
+     * @author IsaSca
+     * @return A basic vertex to string.
+     */
     public String basicToString() {
         return "Vertex[" +
                 "connections=[null]" +
