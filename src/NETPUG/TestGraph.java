@@ -51,7 +51,7 @@ public class TestGraph {
 //            } else {
 //                System.out.println(v.basicToString());
 //            }
-            System.out.println(v.basicToString());
+            System.out.println(v.toString());
         }
 
 
