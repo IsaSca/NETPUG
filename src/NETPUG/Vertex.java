@@ -94,13 +94,16 @@ public class Vertex {
      * @return Returns a String containing the connections.
      */
     private String connectionsToString(){
-        StringBuilder connectionsStr = new StringBuilder();
-        int max = connections.size() - 1;
-        for(int pos = 0; pos < max; pos++){
-            connectionsStr.append(connections.get(pos).getID()).append(", ");
+        if (this.connections.size() > 0) {
+            StringBuilder connectionsStr = new StringBuilder();
+            int max = connections.size() - 1;
+            for(int pos = 0; pos < max; pos++){
+                connectionsStr.append(connections.get(pos).getID()).append(", ");
+            }
+            connectionsStr.append(connections.get(max).getID());
+            return connectionsStr.toString();
         }
-        connectionsStr.append(connections.get(max).getID());
-        return connectionsStr.toString();
+        return "null";
     }
 
     /**
@@ -110,7 +113,7 @@ public class Vertex {
      */
     @Override
     public String toString() {
-        return "VertexNo: " + ID + " {" +
+        return "Vertex: " + ID + " {" +
                 "connections=[" + connectionsToString() +
                 "], ID=" + ID +
                 ", weight=" + weight +
