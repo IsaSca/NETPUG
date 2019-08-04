@@ -86,7 +86,7 @@ public class Vertex {
         return false;
     }
 
-    //BELOW HERE IS BORING SHIT
+    //BELOW HERE IS BORING
 
     /**
      * Puts Connections into a String.
@@ -103,15 +103,25 @@ public class Vertex {
         return connectionsStr.toString();
     }
 
+    /**
+     * Puts a vertex into a string form.
+     * @author IsaSca
+     * @return A string containing vertex information
+     */
     @Override
     public String toString() {
-        return "Vertex{" +
+        return "VertexNo: " + ID + " {" +
                 "connections=[" + connectionsToString() +
                 "], ID=" + ID +
                 ", weight=" + weight +
                 '}';
     }
 
+    /**
+     * An implementation of toString that is used when connectionsToString isn't working.
+     * @author IsaSca
+     * @return A basic vertex to string.
+     */
     public String basicToString() {
         return "Vertex[" +
                 "connections=[null]" +
