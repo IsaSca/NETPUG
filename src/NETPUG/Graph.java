@@ -63,4 +63,12 @@ public class Graph {
         }
         return false;
     }
+    public boolean isNode(int n) {
+        for (Vertex v: vertices) {
+            if (n == v.getID()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
