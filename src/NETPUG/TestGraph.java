@@ -32,9 +32,16 @@ public class TestGraph {
                     while (true) {
                         String check = scanner.nextLine();
                         if (isInt(check)) {
-                            v.addConnection(new Vertex(Integer.parseInt(check)));
+                            if (graph.isNode(Integer.parseInt(check))) {
+                                v.addConnection(new Vertex(Integer.parseInt(check)));
+                            }
+                            else {
+                                System.out.println("Not a node");
+                            }
                         } else if (check.equals("null")) {
                             break;
+                        } else {
+                            System.out.println("Not an integer");
                         }
 
                     }
