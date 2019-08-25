@@ -30,18 +30,10 @@ public class TestGraph {
                 for (Vertex v : graph.vertices) {
                     System.out.println("Please enter the connections for " + v.getID() + ". Type null when done.");
                     while (true) {
-                        String check = scanner.nextLine();
-                        if (isInt(check)) {
-                            if (graph.isNode(Integer.parseInt(check))) {
-                                v.addConnection(new Vertex(Integer.parseInt(check)));
-                            }
-                            else {
-                                System.out.println("Not a node");
-                            }
-                        } else if (check.equals("null")) {
+                        String check = scanner.next();
+                        v.checkVertex(graph, v, check);
+                        if (check.equals("null")) {
                             break;
-                        } else {
-                            System.out.println("Not an integer");
                         }
 
                     }
