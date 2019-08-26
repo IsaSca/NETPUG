@@ -1,6 +1,8 @@
 package NETPUG;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import Screen.Util.Vector;
 /**
  * The implementation for each node.
@@ -131,6 +133,32 @@ public class Vertex {
                 ", ID=" + ID +
                 ", weight=" + weight +
                 ']';
+    }
+
+    public boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+
+    }
+
+    public boolean checkVertex(Graph graph, Vertex vertex, String check) {
+        if (isInt(check)) {
+            if (graph.isNode(Integer.parseInt(check))) {
+                vertex.addConnection(new Vertex(Integer.parseInt(check)));
+                return true;
+            }
+            else {
+                System.out.println("Not a node");
+                return false;
+            }
+        } else {
+            System.out.println("Not an integer");
+            return false;
+        }
     }
 
 
