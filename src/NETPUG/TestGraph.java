@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class TestGraph {
 
     public static void main(String[] args) {
-        new TestGraph();
+        TestGraph tg = new TestGraph();
+        Graph graph = tg.generateGraph();
+        tg.printGraph(graph);
     }
 
     public TestGraph() {
-        Graph graph = generateGraph();
-        printGraph(graph);
     }
 
     /**
