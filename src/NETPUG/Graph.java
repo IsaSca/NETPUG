@@ -12,7 +12,7 @@ public class Graph {
     /**
      * A list of all vertices in the graph.
      */
-    ArrayList<Vertex> vertices = new ArrayList<>();
+    ArrayList<Vertex> vertices;
 
     /**
      * Constructs the graph
@@ -20,6 +20,13 @@ public class Graph {
      */
     public Graph(ArrayList<Vertex> vertices) {
         this.vertices = vertices;
+    }
+
+    /**
+     * Constructs an empty graph
+     */
+    public Graph(){
+        this.vertices = new ArrayList<>();
     }
 
     /**

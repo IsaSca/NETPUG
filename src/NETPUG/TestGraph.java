@@ -1,57 +1,85 @@
 package NETPUG;
 
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestGraph {
-    ArrayList<Vertex> vertices;
-    Graph graph;
+
     public static void main(String[] args) {
         new TestGraph();
     }
 
-    public TestGraph(){
-        vertices = new ArrayList<>();
-        graph = new Graph(vertices);
+    public TestGraph() {
+        Graph graph = generateGraph();
+        printGraph(graph);
+    }
+
+    /**
+     * Allows generation of a graph
+     */
+    public Graph generateGraph() {
+        Graph graph = new Graph();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to add some nodes?");
         if (scanner.next().toLowerCase().equals("yes")) {
-            System.out.println("How many nodes do you want to add");
-            int amount = scanner.nextInt();
-            if (amount > 0) {
-                System.out.println("Please enter your node(s)");
-                for (int i = 0; i < amount; i++) {
-                    graph.vertices.add(new Vertex(scanner.nextInt(), i));
-                }
-            }
+            addNodes(graph);
             System.out.println("Would you like to add connections for each node?");
             if (scanner.next().toLowerCase().equals("yes")) {
-                for (Vertex v : graph.vertices) {
-                    System.out.println("Please enter the connections for " + v.getID() + ". Type null when done.");
-                    while (true) {
-                        String check = scanner.nextLine();
-                        if (isInt(check)) {
-                            if (graph.isNode(Integer.parseInt(check))) {
-                                v.addConnection(new Vertex(Integer.parseInt(check)));
-                            }
-                            else {
-                                System.out.println("Not a node");
-                            }
-                        } else if (check.equals("null")) {
-                            break;
-                        } else {
-                            System.out.println("Not an integer");
-                        }
-
-                    }
-                }
+                addVertexes(graph);
             }
-
-        } else {
-            System.out.println("Thank you");
-            System.exit(0);
+            scanner.close();
         }
+        return graph;
+    }
+
+    /**
+     * Adds nodes to the specified Vertex
+     */
+    public void addNodes(Graph graph) {
+        System.out.println("How many nodes do you want to add");
+        Scanner scan = new Scanner(System.in);
+        int amount = scan.nextInt();
+        if (amount > 0) {
+            System.out.println("Please enter your node(s)");
+            for (int i = 0; i < amount; i++) {
+                graph.vertices.add(new Vertex(scan.nextInt(), i));
+            }
+        }
+    }
+
+    /**
+     * Adds vertexes to all the nodes
+     */
+    public void addVertexes(Graph graph) {
+        for (Vertex v : graph.vertices) {
+            addToVertex(v, graph);
+        }
+    }
+
+    /**
+     * Adds vertexes to all the inputted node?
+     */
+    public void addToVertex(Vertex v, Graph graph) {
+        System.out.println("Please enter the connections for " + v.getID() + ". Type null when done.");
+        Scanner scan = new Scanner(System.in);
+        String check;
+        while (!(check = scan.nextLine()).toLowerCase().equals("null")) {//Nifty thing I learnt last year
+            if (isInt(check)) {
+                int val = Integer.parseInt(check);//Just to reduce the checks
+                if (graph.isNode(val)) {
+                    v.addConnection(new Vertex(val));
+                } else {
+                    System.out.println("Not a node");
+                }
+            } else {
+                System.out.println("Not an integer");
+            }
+        }
+    }
+
+    /**
+     * Prints the inputted graph
+     */
+    public void printGraph(Graph graph) {
         for (Vertex v : graph.vertices) {
 //            if(v.getConnections().size() == 0) {
 //                System.out.println(v.toString());
@@ -60,9 +88,8 @@ public class TestGraph {
 //            }
             System.out.println(v.toString());
         }
-
-
     }
+
     public boolean isInt(String s) {
         try {
             Integer.parseInt(s);
