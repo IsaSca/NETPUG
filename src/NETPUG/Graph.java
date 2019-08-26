@@ -37,6 +37,24 @@ public class Graph {
         return vertices;
     }
 
+
+    /**
+     * Gets a vertex by ID, quick and dirty, please replace
+     * @return Returns specified Vertex, null if it is not in the graph
+     */
+    public Vertex getVertexByID(int ID){
+        Vertex vertex = null;
+        if(this.isNode(ID)){
+            for (Vertex v: vertices){
+                if(v.getID() == ID){
+                    vertex = v;
+                    break;
+                }
+            }
+        }
+        return vertex;
+    }
+
     /**
      * Sets the ArrayList to specific Vertices.
      * @param vertices The ArrayList to set the Vertices of the NETPUG.Graph to.

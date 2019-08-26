@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Screen.Util.Vector;
+
 /**
  * The implementation for each node.
+ *
  * @author Isaac Scarisbrick
  * @version 0.1
  * @since 0.1
@@ -31,33 +33,55 @@ public class Vertex {
         this.ID = ID;
         this.weight = weight;
     }
+
     public ArrayList<Vertex> getConnections() {
         return connections;
     }
+
     public void setConnections(ArrayList<Vertex> connections) {
         this.connections = connections;
     }
+
     public int getID() {
         return ID;
     }
+
     public void setID(int ID) {
         this.ID = ID;
     }
+
     public int getWeight() {
         return weight;
     }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
-    public Vector getVector() { return vector; }
+    public Vector getVector() {
+        return vector;
+    }
 
-    public void setVector(Double x, Double y) { this.vector = new Vector(x,y); }
-    public void setVector(Vector v) { this.vector = v; }
+    public void setVector(Double x, Double y) {
+        this.vector = new Vector(x, y);
+    }
+
+    public void setVector(Vector v) {
+        /*for (Vertex con : connections) {
+            for (Vertex conOther : con.getConnections()) {
+                if (conOther.getID() == this.ID) {
+                    conOther.setVector(v);
+                }
+            }
+        }*/
+        this.vector = v;
+    }
+
     /**
      * Adds a single vertex connection.
-     *@param g A NETPUG.Vertex to be added to connections.
-     *@since 0.1
+     *
+     * @param g A NETPUG.Vertex to be added to connections.
+     * @since 0.1
      */
     public void addConnection(Vertex g) {
         connections.add(g);
@@ -65,8 +89,9 @@ public class Vertex {
 
     /**
      * Adds a lot of vertices, hence the name.
-     * @since 0.1
+     *
      * @param a The multiple vertices to be added to the connections.
+     * @since 0.1
      */
     public void addLots(ArrayList<Vertex> a) {
         connections.addAll(a);
@@ -74,6 +99,7 @@ public class Vertex {
 
     /**
      * Finds a node based on given ID.
+     *
      * @param ID The ID of the vertex you want to find.
      * @return True for found, false for not.
      */
@@ -92,14 +118,15 @@ public class Vertex {
 
     /**
      * Puts Connections into a String.
-     * @author Hawkeye
+     *
      * @return Returns a String containing the connections.
+     * @author Hawkeye
      */
-    private String connectionsToString(){
+    private String connectionsToString() {
         if (this.connections.size() > 0) {
             StringBuilder connectionsStr = new StringBuilder();
             int max = connections.size() - 1;
-            for(int pos = 0; pos < max; pos++){
+            for (int pos = 0; pos < max; pos++) {
                 connectionsStr.append(connections.get(pos).getID()).append(", ");
             }
             connectionsStr.append(connections.get(max).getID());
@@ -110,8 +137,9 @@ public class Vertex {
 
     /**
      * Puts a vertex into a string form.
-     * @author IsaSca
+     *
      * @return A string containing vertex information
+     * @author IsaSca
      */
     @Override
     public String toString() {
@@ -124,8 +152,9 @@ public class Vertex {
 
     /**
      * An implementation of toString that is used when connectionsToString isn't working.
-     * @author IsaSca
+     *
      * @return A basic vertex to string.
+     * @author IsaSca
      */
     public String basicToString() {
         return "Vertex[" +
@@ -150,8 +179,7 @@ public class Vertex {
             if (graph.isNode(Integer.parseInt(check))) {
                 vertex.addConnection(new Vertex(Integer.parseInt(check)));
                 return true;
-            }
-            else {
+            } else {
                 System.out.println("Not a node");
                 return false;
             }
@@ -160,8 +188,6 @@ public class Vertex {
             return false;
         }
     }
-
-
 
 
 }

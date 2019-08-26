@@ -66,7 +66,7 @@ public class TestGraph {
             if (isInt(check)) {
                 int val = Integer.parseInt(check);//Just to reduce the checks
                 if (graph.isNode(val)) {
-                    v.addConnection(new Vertex(val));
+                    v.addConnection(graph.getVertexByID(val));
                 } else {
                     System.out.println("Not a node");
                 }
