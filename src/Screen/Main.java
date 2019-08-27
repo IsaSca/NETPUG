@@ -1,12 +1,12 @@
 package Screen;
 
-import NETPUG.TestGraph;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.ConditionalFeature;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
@@ -41,6 +41,8 @@ public class Main extends Application{
      * @param mainStage It just gets there, don't ask
      */
     public void start(Stage mainStage){
+        mainStage.setTitle("NETPUG");
+        mainStage.getIcons().add(new Image("Resources/NETPUGIcon.png"));
         //Says whether the graphics card can/is being used(Not sure if it really matters but It's nice to know about it)
         if (Platform.isSupported(ConditionalFeature.GRAPHICS)) {
             System.out.println("Graphics acceleration on.");
